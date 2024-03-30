@@ -45,6 +45,7 @@ namespace OlympicGames
             {
                 case "add":
                     {
+
                         break;
                     }
                 case "del":
@@ -117,17 +118,18 @@ namespace OlympicGames
             {
                 case "add":
                     {
-                        if(lbParticipants.SelectedIndex != -1)
+                        if (lbParticipants.SelectedIndex != -1)
                         {
                             int selectedIndex = lbParticipants.SelectedIndex;
                             CountryParticipant selectedCountryParticipant = participants[selectedIndex];
-                            btnAddAthlete.Enabled = true;
                             if (tbFullName.Text != string.Empty)
                             {
-                                Athlete athlete = new Athlete();
-                                athlete.FullName = tbFullName.Text;
-                                athlete.Age = (int)nudAge.Value;
-                                athlete.IsMale = cbIsMale.Checked;
+                                Athlete athlete = new Athlete()
+                                {
+                                    FullName = tbFullName.Text,
+                                    Age = (int)nudAge.Value,
+                                    IsMale = cbIsMale.Checked
+                                };
                                 selectedCountryParticipant.Athletes.Add(athlete);
                                 UpdateListBoxes();
                             }
@@ -140,10 +142,32 @@ namespace OlympicGames
                     }
                 case "del":
                     {
+                        if (lbParticipants.SelectedIndex != -1)
+                        {
+                            int selectedIndex = lbParticipants.SelectedIndex;
+                            CountryParticipant selectedCountryParticipant = participants[selectedIndex];
+                            if (lbAthletes.SelectedIndex != -1)
+                            {
+                                Athlete athlete = selectedCountryParticipant.Athletes[lbAthletes.SelectedIndex];
+                                selectedCountryParticipant.Athletes.Remove(athlete);
+                            }
+                        }
                         break;
                     }
                 case "edit":
                     {
+                        if (lbParticipants.SelectedIndex != -1)
+                        {
+                            int selectedIndex = lbParticipants.SelectedIndex;
+                            CountryParticipant selectedCountryParticipant = participants[selectedIndex];
+                            if (lbAthletes.SelectedIndex != -1)
+                            {
+                                Athlete athlete = selectedCountryParticipant.Athletes[lbAthletes.SelectedIndex];
+                                athlete.FullName = tbFullName.Text;
+                                athlete.Age = (int)nudAge.Value;
+                                athlete.IsMale = cbIsMale.Checked;
+                            }
+                        }
                         break;
                     }
             }
@@ -156,14 +180,14 @@ namespace OlympicGames
             {
                 int selectedIndex = lbParticipants.SelectedIndex;
                 CountryParticipant selectedParticipant = countryParticipants[selectedIndex];
-                foreach(var at in selectedParticipant.Athletes)
+                foreach (var at in selectedParticipant.Athletes)
                 {
                     lbAthletes.Items.Add(at);
                     lbAthletes1.Items.Add(at);
                 }
             }
             lbCities.Items.Clear();
-            if(cities.Count != 0) 
+            if (cities.Count != 0)
             {
                 foreach (var c in cities)
                 {
@@ -172,9 +196,9 @@ namespace OlympicGames
             }
             lbCountryParticipants.Items.Clear();
             lbParticipants.Items.Clear();
-            if(participants != null)
+            if (participants != null)
             {
-                foreach(var participant in participants)
+                foreach (var participant in participants)
                 {
                     lbCountryParticipants.Items.Add(participant);
                     lbParticipants.Items.Add(participant);
@@ -184,5 +208,15 @@ namespace OlympicGames
 
         }
 
+        private void lbParticipants_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnAddAthlete.Enabled = true;
+        }
+
+        private void lbAthletes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDelAthlete.Enabled = true;
+            btnEditAthlete.Enabled = true;
+        }
     }
 }

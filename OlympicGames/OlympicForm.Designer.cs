@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             tabPage2 = new TabPage();
+            button1 = new Button();
             lbCities = new ListBox();
             lbAthletes1 = new ListBox();
             lbParticipants = new ListBox();
@@ -72,6 +73,7 @@
             cbCountryParticipants = new ComboBox();
             tabControl1 = new TabControl();
             tabPage3 = new TabPage();
+            button2 = new Button();
             label17 = new Label();
             btnEditAthlete = new Button();
             btnDelAthlete = new Button();
@@ -82,8 +84,6 @@
             nudAge = new NumericUpDown();
             tbFullName = new TextBox();
             lbAthletes = new ListBox();
-            button1 = new Button();
-            button2 = new Button();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -138,6 +138,16 @@
             tabPage2.Text = "City | Participants";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(8, 363);
+            button1.Name = "button1";
+            button1.Size = new Size(59, 42);
+            button1.TabIndex = 11;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnBack_Click;
+            // 
             // lbCities
             // 
             lbCities.FormattingEnabled = true;
@@ -161,6 +171,7 @@
             lbParticipants.Name = "lbParticipants";
             lbParticipants.Size = new Size(196, 284);
             lbParticipants.TabIndex = 8;
+            lbParticipants.SelectedIndexChanged += lbParticipants_SelectedIndexChanged;
             // 
             // numericUpDown2
             // 
@@ -548,6 +559,16 @@
             tabPage3.Text = "Athletes";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(19, 363);
+            button2.Name = "button2";
+            button2.Size = new Size(59, 42);
+            button2.TabIndex = 17;
+            button2.Text = "Back";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += btnBack_Click;
+            // 
             // label17
             // 
             label17.AutoSize = true;
@@ -645,26 +666,7 @@
             lbAthletes.Name = "lbAthletes";
             lbAthletes.Size = new Size(208, 244);
             lbAthletes.TabIndex = 8;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(8, 363);
-            button1.Name = "button1";
-            button1.Size = new Size(59, 42);
-            button1.TabIndex = 11;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += btnBack_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(19, 363);
-            button2.Name = "button2";
-            button2.Size = new Size(59, 42);
-            button2.TabIndex = 17;
-            button2.Text = "Back";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += btnBack_Click;
+            lbAthletes.SelectedIndexChanged += lbAthletes_SelectedIndexChanged;
             // 
             // OlympicForm
             // 

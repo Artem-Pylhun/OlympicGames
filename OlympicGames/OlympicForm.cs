@@ -35,7 +35,7 @@ namespace OlympicGames
             InitializeComponent();
             baseform = form;
             this.olympic = olympic;
-
+            UpdateListBoxes();
         }
 
         private void btnParticipant(object sender, EventArgs e)
@@ -163,9 +163,12 @@ namespace OlympicGames
                 }
             }
             lbCities.Items.Clear();
-            foreach(var c in cities)
+            if(cities.Count != 0) 
             {
-                lbCities.Items.Add(c);
+                foreach (var c in cities)
+                {
+                    lbCities.Items.Add(c);
+                }
             }
             lbCountryParticipants.Items.Clear();
             lbParticipants.Items.Clear();

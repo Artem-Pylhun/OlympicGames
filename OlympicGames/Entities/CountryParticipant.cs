@@ -12,5 +12,10 @@ namespace OlympicGames.Entities
         public int Wins { get; set; }
         public int Losses { get; set; }
         public List<Athlete> Athletes { get; set; } = new List<Athlete>();
+
+        public override string ToString()
+        {
+            return $"{Title}, W/L: {Wins} - {Losses}";
+        }
     }
 }

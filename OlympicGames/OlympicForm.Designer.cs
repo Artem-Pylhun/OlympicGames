@@ -34,13 +34,13 @@
             lbCities = new ListBox();
             lbAthletes1 = new ListBox();
             lbParticipants = new ListBox();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            nudWins = new NumericUpDown();
+            nudLosses = new NumericUpDown();
             btnEditCity = new Button();
             btnEditParticipant = new Button();
             btnDelCity = new Button();
             btnAddCity = new Button();
-            btnDeleteParticipant = new Button();
+            btnDelParticipant = new Button();
             btnAddParticipant = new Button();
             label9 = new Label();
             label8 = new Label();
@@ -53,7 +53,7 @@
             label6 = new Label();
             nudPopulation = new NumericUpDown();
             tbLocation = new TextBox();
-            textBox1 = new TextBox();
+            tbParticipantTitle = new TextBox();
             tbCityTitle = new TextBox();
             tabPage1 = new TabPage();
             label18 = new Label();
@@ -85,8 +85,8 @@
             tbFullName = new TextBox();
             lbAthletes = new ListBox();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudWins).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudLosses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudPopulation).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudYear).BeginInit();
@@ -109,13 +109,13 @@
             tabPage2.Controls.Add(lbCities);
             tabPage2.Controls.Add(lbAthletes1);
             tabPage2.Controls.Add(lbParticipants);
-            tabPage2.Controls.Add(numericUpDown2);
-            tabPage2.Controls.Add(numericUpDown1);
+            tabPage2.Controls.Add(nudWins);
+            tabPage2.Controls.Add(nudLosses);
             tabPage2.Controls.Add(btnEditCity);
             tabPage2.Controls.Add(btnEditParticipant);
             tabPage2.Controls.Add(btnDelCity);
             tabPage2.Controls.Add(btnAddCity);
-            tabPage2.Controls.Add(btnDeleteParticipant);
+            tabPage2.Controls.Add(btnDelParticipant);
             tabPage2.Controls.Add(btnAddParticipant);
             tabPage2.Controls.Add(label9);
             tabPage2.Controls.Add(label8);
@@ -128,7 +128,7 @@
             tabPage2.Controls.Add(label6);
             tabPage2.Controls.Add(nudPopulation);
             tabPage2.Controls.Add(tbLocation);
-            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(tbParticipantTitle);
             tabPage2.Controls.Add(tbCityTitle);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
@@ -173,19 +173,19 @@
             lbParticipants.TabIndex = 8;
             lbParticipants.SelectedIndexChanged += lbParticipants_SelectedIndexChanged;
             // 
-            // numericUpDown2
+            // nudWins
             // 
-            numericUpDown2.Location = new Point(358, 129);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(150, 27);
-            numericUpDown2.TabIndex = 6;
+            nudWins.Location = new Point(358, 129);
+            nudWins.Name = "nudWins";
+            nudWins.Size = new Size(150, 27);
+            nudWins.TabIndex = 6;
             // 
-            // numericUpDown1
+            // nudLosses
             // 
-            numericUpDown1.Location = new Point(358, 185);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(150, 27);
-            numericUpDown1.TabIndex = 6;
+            nudLosses.Location = new Point(358, 185);
+            nudLosses.Name = "nudLosses";
+            nudLosses.Size = new Size(150, 27);
+            nudLosses.TabIndex = 6;
             // 
             // btnEditCity
             // 
@@ -209,6 +209,7 @@
             btnEditParticipant.Tag = "edit";
             btnEditParticipant.Text = "Edit";
             btnEditParticipant.UseVisualStyleBackColor = true;
+            btnEditParticipant.Click += btnParticipant;
             // 
             // btnDelCity
             // 
@@ -232,15 +233,16 @@
             btnAddCity.UseVisualStyleBackColor = true;
             btnAddCity.Click += btnCity;
             // 
-            // btnDeleteParticipant
+            // btnDelParticipant
             // 
-            btnDeleteParticipant.Location = new Point(585, 359);
-            btnDeleteParticipant.Name = "btnDeleteParticipant";
-            btnDeleteParticipant.Size = new Size(67, 50);
-            btnDeleteParticipant.TabIndex = 4;
-            btnDeleteParticipant.Tag = "del";
-            btnDeleteParticipant.Text = "Delete";
-            btnDeleteParticipant.UseVisualStyleBackColor = true;
+            btnDelParticipant.Location = new Point(585, 359);
+            btnDelParticipant.Name = "btnDelParticipant";
+            btnDelParticipant.Size = new Size(67, 50);
+            btnDelParticipant.TabIndex = 4;
+            btnDelParticipant.Tag = "del";
+            btnDelParticipant.Text = "Delete";
+            btnDelParticipant.UseVisualStyleBackColor = true;
+            btnDelParticipant.Click += btnParticipant;
             // 
             // btnAddParticipant
             // 
@@ -251,6 +253,7 @@
             btnAddParticipant.Tag = "add";
             btnAddParticipant.Text = "Add";
             btnAddParticipant.UseVisualStyleBackColor = true;
+            btnAddParticipant.Click += btnParticipant;
             // 
             // label9
             // 
@@ -352,12 +355,12 @@
             tbLocation.Size = new Size(150, 27);
             tbLocation.TabIndex = 0;
             // 
-            // textBox1
+            // tbParticipantTitle
             // 
-            textBox1.Location = new Point(358, 76);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 27);
-            textBox1.TabIndex = 0;
+            tbParticipantTitle.Location = new Point(358, 76);
+            tbParticipantTitle.Name = "tbParticipantTitle";
+            tbParticipantTitle.Size = new Size(150, 27);
+            tbParticipantTitle.TabIndex = 0;
             // 
             // tbCityTitle
             // 
@@ -525,6 +528,7 @@
             cbCountryParticipants.Name = "cbCountryParticipants";
             cbCountryParticipants.Size = new Size(174, 28);
             cbCountryParticipants.TabIndex = 0;
+            cbCountryParticipants.SelectedIndexChanged += cbCountryParticipants_SelectedIndexChanged;
             // 
             // tabControl1
             // 
@@ -680,8 +684,8 @@
             FormClosed += OlympicForm_FormClosed;
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudWins).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudLosses).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudPopulation).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -698,7 +702,7 @@
         private Label label1;
         private TabPage tabPage2;
         private Button btnEditParticipant;
-        private Button btnDeleteParticipant;
+        private Button btnDelParticipant;
         private Button btnAddParticipant;
         private Label label9;
         private Label label8;
@@ -723,12 +727,12 @@
         private Label label3;
         private ComboBox cbCountryParticipants;
         private TabControl tabControl1;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown nudWins;
+        private NumericUpDown nudLosses;
         private Label label11;
         private TabPage tabPage3;
         private ListBox lbParticipants;
-        private TextBox textBox1;
+        private TextBox tbParticipantTitle;
         private Label label13;
         private Label label12;
         private ListBox lbAthletes;

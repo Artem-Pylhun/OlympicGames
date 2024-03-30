@@ -11,5 +11,10 @@ namespace OlympicGames.Entities
         public string Title { get; set; }
         public string Location { get; set; }
         public int Population { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Title}, {Location}, Population: {Population}";
+        }
     }
 }

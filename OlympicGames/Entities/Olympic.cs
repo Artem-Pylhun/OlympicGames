@@ -12,5 +12,10 @@ namespace OlympicGames.Entities
         public City HostCity {get; set;}
         public EventType EventType { get; set; }
         public List<CountryParticipant> participants = new List<CountryParticipant>();
+
+        public override string ToString()
+        {
+            return $"";
+        }
     }
 }

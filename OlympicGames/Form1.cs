@@ -203,5 +203,26 @@ namespace OlympicGames
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_hasOpenedFile)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to close this form without saving?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                return;
+            }
+
+            var confirm = MessageBox.Show("Do you want to make extra saving?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            {
+                if (confirm == DialogResult.Yes)
+                {
+                    DataManager.Write(_openedPath);
+                    MessageBox.Show("Data was extra saved!");
+                }
+            }
+        }
     }
 }

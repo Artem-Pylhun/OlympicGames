@@ -146,13 +146,13 @@
             // 
             openToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cSVToolStripMenuItem, jSONToolStripMenuItem, tXTToolStripMenuItem, xLSXToolStripMenuItem, xMLToolStripMenuItem });
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Size = new Size(141, 26);
             openToolStripMenuItem.Text = "Open";
             // 
             // cSVToolStripMenuItem
             // 
             cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            cSVToolStripMenuItem.Size = new Size(224, 26);
+            cSVToolStripMenuItem.Size = new Size(127, 26);
             cSVToolStripMenuItem.Tag = "csv";
             cSVToolStripMenuItem.Text = "CSV";
             cSVToolStripMenuItem.Click += OpenMenuOptionClick;
@@ -192,7 +192,7 @@
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(224, 26);
+            saveToolStripMenuItem.Size = new Size(141, 26);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += SaveMenuOptionClick;
             // 
@@ -200,13 +200,13 @@
             // 
             saveAsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cSVToolStripMenuItem1, jSONToolStripMenuItem1, tXTToolStripMenuItem1, xLSXToolStripMenuItem1, xMLToolStripMenuItem1 });
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(224, 26);
+            saveAsToolStripMenuItem.Size = new Size(141, 26);
             saveAsToolStripMenuItem.Text = "Save as";
             // 
             // cSVToolStripMenuItem1
             // 
             cSVToolStripMenuItem1.Name = "cSVToolStripMenuItem1";
-            cSVToolStripMenuItem1.Size = new Size(224, 26);
+            cSVToolStripMenuItem1.Size = new Size(127, 26);
             cSVToolStripMenuItem1.Tag = "csv";
             cSVToolStripMenuItem1.Text = "CSV";
             cSVToolStripMenuItem1.Click += SaveAsMenuOptionClick;
@@ -214,7 +214,7 @@
             // jSONToolStripMenuItem1
             // 
             jSONToolStripMenuItem1.Name = "jSONToolStripMenuItem1";
-            jSONToolStripMenuItem1.Size = new Size(224, 26);
+            jSONToolStripMenuItem1.Size = new Size(127, 26);
             jSONToolStripMenuItem1.Tag = "json";
             jSONToolStripMenuItem1.Text = "JSON";
             jSONToolStripMenuItem1.Click += SaveAsMenuOptionClick;
@@ -222,7 +222,7 @@
             // tXTToolStripMenuItem1
             // 
             tXTToolStripMenuItem1.Name = "tXTToolStripMenuItem1";
-            tXTToolStripMenuItem1.Size = new Size(224, 26);
+            tXTToolStripMenuItem1.Size = new Size(127, 26);
             tXTToolStripMenuItem1.Tag = "txt";
             tXTToolStripMenuItem1.Text = "TXT";
             tXTToolStripMenuItem1.Click += SaveAsMenuOptionClick;
@@ -230,7 +230,7 @@
             // xLSXToolStripMenuItem1
             // 
             xLSXToolStripMenuItem1.Name = "xLSXToolStripMenuItem1";
-            xLSXToolStripMenuItem1.Size = new Size(224, 26);
+            xLSXToolStripMenuItem1.Size = new Size(127, 26);
             xLSXToolStripMenuItem1.Tag = "xlsx";
             xLSXToolStripMenuItem1.Text = "XLSX";
             xLSXToolStripMenuItem1.Click += SaveAsMenuOptionClick;
@@ -238,7 +238,7 @@
             // xMLToolStripMenuItem1
             // 
             xMLToolStripMenuItem1.Name = "xMLToolStripMenuItem1";
-            xMLToolStripMenuItem1.Size = new Size(224, 26);
+            xMLToolStripMenuItem1.Size = new Size(127, 26);
             xMLToolStripMenuItem1.Tag = "xml";
             xMLToolStripMenuItem1.Text = "XML";
             xMLToolStripMenuItem1.Click += SaveAsMenuOptionClick;
@@ -258,6 +258,7 @@
             Controls.Add(lbOlympics);
             Name = "Form1";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

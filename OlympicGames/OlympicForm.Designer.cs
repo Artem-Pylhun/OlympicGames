@@ -494,7 +494,7 @@
             // lbCountryParticipants
             // 
             lbCountryParticipants.FormattingEnabled = true;
-            lbCountryParticipants.Location = new Point(441, 58);
+            lbCountryParticipants.Location = new Point(430, 58);
             lbCountryParticipants.Name = "lbCountryParticipants";
             lbCountryParticipants.Size = new Size(269, 244);
             lbCountryParticipants.TabIndex = 3;

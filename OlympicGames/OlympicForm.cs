@@ -17,6 +17,7 @@ namespace OlympicGames
         List<City> cities;
         Olympic olympic;
         List<CountryParticipant> participants;
+        EventType eventType;
         public OlympicForm(Form1 form)
         {
             InitializeComponent();
@@ -25,6 +26,37 @@ namespace OlympicGames
             cities = new List<City>();
             participants = new List<CountryParticipant>();
             btnSaveOlympicChanges.Enabled = false;
+            nudYear.Minimum = DateTime.Now.Year;
+            btnAddAthlete.Enabled = false;
+            btnDelAthlete.Enabled = false;
+            btnEditAthlete.Enabled = false;
+
+            btnEditParticipant.Enabled = false;
+            btnDelParticipant.Enabled = false;
+
+            btnAddParticipantToList.Enabled = false;
+            btnRemoveParticipantFromList.Enabled = false;
+
+            btnDelCity.Enabled = false;
+            btnEditCity.Enabled = false;
+
+            eventType = new EventType();
+            cbEventType.Items.AddRange(eventType.Type.ToArray());
+        }
+        public OlympicForm(Form1 form, Olympic olympic)
+        {
+            InitializeComponent();
+            baseform = form;
+            this.olympic = olympic;
+            cities = new List<City>();
+            participants = new List<CountryParticipant>();
+            cities.Add(olympic.HostCity);
+            participants.AddRange(olympic.participants.ToArray());
+            UpdateListBoxes();
+            cbCityHost.SelectedItem = olympic.HostCity.Title;
+            cbEventType.SelectedItem = olympic.EventType.Title;
+            btnCreateOlympic.Enabled = false;
+            nudYear.Minimum = DateTime.Now.Year;
 
             btnAddAthlete.Enabled = false;
             btnDelAthlete.Enabled = false;
@@ -35,13 +67,13 @@ namespace OlympicGames
 
             btnAddParticipantToList.Enabled = false;
             btnRemoveParticipantFromList.Enabled = false;
-        }
-        public OlympicForm(Form1 form, Olympic olympic)
-        {
-            InitializeComponent();
-            baseform = form;
-            this.olympic = olympic;
-            UpdateListBoxes();
+
+            btnDelCity.Enabled = false;
+            btnEditCity.Enabled = false;
+
+            eventType = new EventType();
+            cbEventType.Items.AddRange(eventType.Type.ToArray());
+
         }
 
         private void btnParticipant(object sender, EventArgs e)
@@ -63,6 +95,10 @@ namespace OlympicGames
                             };
                             participants.Add(participant);
                             UpdateListBoxes();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Fill in all info about Country-Participant", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                         }
                         break;
                     }
@@ -90,18 +126,44 @@ namespace OlympicGames
                             UpdateListBoxes();
                         }
                         break;
+
                     }
+
             }
 
         }
 
         private void btnCreateOlympic_Click(object sender, EventArgs e)
         {
-
+            if (cbCityHost.SelectedIndex != -1 && cbEventType.SelectedIndex != -1)
+            {
+                olympic.Year = (int)nudYear.Value;
+                City city = cities[cbCityHost.SelectedIndex];
+                olympic.HostCity = city;
+                olympic.EventType = new EventType() { Title = cbEventType.SelectedItem.ToString() };
+                baseform.AddOlympic(olympic);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Fill in all info about Olympic", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            }
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            if (cbCityHost.SelectedIndex != -1 && cbEventType.SelectedIndex != -1)
+            {
+                olympic.Year = (int)nudYear.Value;
+                City city = cities[cbCityHost.SelectedIndex];
+                olympic.HostCity = city;
+                olympic.EventType = new EventType() { Title = cbEventType.SelectedItem.ToString() };
+                baseform.UpdateOlympicInfo(olympic);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Fill in all info about Olympic", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -123,14 +185,49 @@ namespace OlympicGames
             {
                 case "add":
                     {
+                        if (tbCityTitle.Text != string.Empty
+                            && tbLocation.Text != string.Empty)
+                        {
+                            City city = new City()
+                            {
+                                Title = tbCityTitle.Text,
+                                Location = tbLocation.Text,
+                                Population = (int)nudPopulation.Value
+                            };
+                            cities.Add(city);
+                            UpdateListBoxes();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Fill in all info about City", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+                        }
                         break;
                     }
                 case "del":
                     {
+                        if (lbCities.SelectedIndex != -1)
+                        {
+                            int selectedIndex = lbCities.SelectedIndex;
+                            City selectedCity = cities[selectedIndex];
+                            cities.Remove(selectedCity);
+                            UpdateListBoxes();
+                        }
                         break;
                     }
                 case "edit":
                     {
+                        if (lbCities.SelectedIndex != -1)
+                        {
+
+                            int selectedIndex = lbCities.SelectedIndex;
+                            City selectedCity = cities[selectedIndex];
+                            selectedCity.Title = tbCityTitle.Text;
+                            selectedCity.Location = tbLocation.Text;
+                            selectedCity.Population = (int)nudPopulation.Value;
+                            cbCityHost.SelectedIndex = -1;
+                            UpdateListBoxes();
+                        }
                         break;
                     }
             }
@@ -142,6 +239,7 @@ namespace OlympicGames
             {
                 CountryParticipant countryParticipant = participants[cbCountryParticipants.SelectedIndex];
                 olympic.participants.Add(countryParticipant);
+                cbCountryParticipants.SelectedIndex = -1;
                 UpdateListBoxes();
             }
         }
@@ -150,7 +248,7 @@ namespace OlympicGames
         {
             if (lbCountryParticipants.SelectedIndex != -1)
             {
-                CountryParticipant countryParticipant = participants[lbCountryParticipants.SelectedIndex];
+                CountryParticipant countryParticipant = olympic.participants[lbCountryParticipants.SelectedIndex];
                 olympic.participants.Remove(countryParticipant);
                 UpdateListBoxes();
             }
@@ -248,13 +346,13 @@ namespace OlympicGames
 
             lbCities.Items.Clear();
             cbCityHost.Items.Clear();
+
             cbCountryParticipants.Items.Clear();
-            if (cities.Count != 0)
+
+            foreach (var c in cities)
             {
-                foreach (var c in cities)
-                {
-                    lbCities.Items.Add(c);
-                }
+                lbCities.Items.Add(c);
+                cbCityHost.Items.Add(c.Title);
             }
             lbParticipants.Items.Clear();
             if (participants != null)
@@ -264,6 +362,7 @@ namespace OlympicGames
                     lbParticipants.Items.Add(participant);
                     cbCountryParticipants.Items.Add(participant.Title);
                 }
+
             }
             lbCountryParticipants.Items.Clear();
             if (olympic.participants.Count != 0)
@@ -308,6 +407,25 @@ namespace OlympicGames
         private void cbCountryParticipants_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbCountryParticipants.SelectedIndex != -1)
+            {
+                btnAddParticipantToList.Enabled = true;
+                btnRemoveParticipantFromList.Enabled = true;
+            }
+        }
+
+        private void lbCities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCities.SelectedIndex != -1)
+            {
+                btnDelCity.Enabled = true;
+                btnEditCity.Enabled = true;
+
+            }
+        }
+
+        private void lbCountryParticipants_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCountryParticipants.SelectedIndex != -1)
             {
                 btnAddParticipantToList.Enabled = true;
                 btnRemoveParticipantFromList.Enabled = true;

@@ -8,6 +8,9 @@ namespace OlympicGames.Entities
 {
     public class EventType
     {
-        public List<string> Type = [ "Winter", "Summer" ];
+        public string[] Type = { "Winter", "Summer" };
+        public string Title;
+
+
     }
 }

@@ -15,7 +15,7 @@ namespace OlympicGames.Entities
 
         public override string ToString()
         {
-            return $"";
+            return $"Year: {Year}, Host: {HostCity}, Type: {EventType.Title}";
         }
     }
 }

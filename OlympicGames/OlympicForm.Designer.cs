@@ -429,6 +429,7 @@
             // nudYear
             // 
             nudYear.Location = new Point(24, 81);
+            nudYear.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nudYear.Name = "nudYear";
             nudYear.Size = new Size(150, 27);
             nudYear.TabIndex = 4;
@@ -465,6 +466,7 @@
             // 
             // cbEventType
             // 
+            cbEventType.DropDownStyle = ComboBoxStyle.DropDownList;
             cbEventType.FormattingEnabled = true;
             cbEventType.Location = new Point(24, 213);
             cbEventType.Name = "cbEventType";
@@ -473,6 +475,7 @@
             // 
             // cbCityHost
             // 
+            cbCityHost.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCityHost.FormattingEnabled = true;
             cbCityHost.Location = new Point(24, 148);
             cbCityHost.Name = "cbCityHost";
@@ -526,6 +529,7 @@
             // 
             // cbCountryParticipants
             // 
+            cbCountryParticipants.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCountryParticipants.FormattingEnabled = true;
             cbCountryParticipants.Location = new Point(235, 91);
             cbCountryParticipants.Name = "cbCountryParticipants";

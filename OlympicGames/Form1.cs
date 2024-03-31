@@ -1,3 +1,4 @@
+using OfficeOpenXml;
 using OlympicGames.Core.Entities;
 using OlympicGames.Services.Common;
 using OlympicGames.Services.OlympicDataManagers;
@@ -12,6 +13,7 @@ namespace OlympicGames
         private string _openedPath = "";
         public Form1()
         {
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             InitializeComponent();
             DataManager = new JsonOlympicDataManager();
             btnDelOlympic.Enabled = false;

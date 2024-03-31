@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OlympicGames.Core\OlympicGames.Core\OlympicGames.Core.csproj" />
+  </ItemGroup>
+
 </Project>

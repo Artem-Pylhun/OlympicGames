@@ -1,4 +1,5 @@
-﻿using OlympicGames.Services.Common;
+﻿using OlympicGames.Core.Entities;
+using OlympicGames.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OlympicGames.Services.OlympicDataManagers
 {
-    public class CsvOlympicDataManager : IMultipleEntityDataManager
+    public class CsvOlympicDataManager : IOlimpicDataManager
     {
         public bool IsChanged => throw new NotImplementedException();
 
@@ -23,7 +24,7 @@ namespace OlympicGames.Services.OlympicDataManagers
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<Olympic> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -33,7 +34,7 @@ namespace OlympicGames.Services.OlympicDataManagers
             throw new NotImplementedException();
         }
 
-        public void SetAll<T>(IEnumerable<T> entities)
+        public void SetAll(IEnumerable<Olympic> entities)
         {
             throw new NotImplementedException();
         }

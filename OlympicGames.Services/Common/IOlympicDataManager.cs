@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OlympicGames.Services.Common
 {
-    public interface IOlimpicDataManager : IFilter
+    public interface IOlympicDataManager : IFilter
     {
         void SetAll(IEnumerable<Olympic> entities);
         void Read(string path);

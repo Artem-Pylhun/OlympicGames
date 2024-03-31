@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OlympicGames.Services.OlympicDataManagers
 {
-    public class XmlOlympicDataManager : IOlimpicDataManager
+    public class XmlOlympicDataManager : IOlympicDataManager
     {
         public bool IsChanged => throw new NotImplementedException();
 

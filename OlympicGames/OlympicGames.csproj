@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OlympicGames.Core\OlympicGames.Core\OlympicGames.Core.csproj" />
+    <ProjectReference Include="..\OlympicGames.Services\OlympicGames.Services.csproj" />
   </ItemGroup>
 
 </Project>

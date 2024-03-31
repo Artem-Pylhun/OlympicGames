@@ -1,14 +1,19 @@
 using OlympicGames.Core.Entities;
+using OlympicGames.Services.Common;
+using OlympicGames.Services.OlympicDataManagers;
+using System.Numerics;
 
 namespace OlympicGames
 {
     public partial class Form1 : Form
     {
-        public List<Olympic> olympics;
+        public IOlympicDataManager DataManager;
+        private bool _hasOpenedFile = false;
+        private string _openedPath = "";
         public Form1()
         {
             InitializeComponent();
-            olympics = new List<Olympic>();
+            DataManager = new TxtOlympicDataManager();
             btnDelOlympic.Enabled = false;
             btnEditOlympic.Enabled = false;
             UpdateListBox();
@@ -33,7 +38,7 @@ namespace OlympicGames
                         if (lbOlympics.SelectedItem != null)
                         {
                             int selectedIndex = lbOlympics.SelectedIndex;
-                            Olympic selectedOlympic = olympics[selectedIndex];
+                            Olympic selectedOlympic = DataManager.GetAll().ToList()[selectedIndex];
                             OlympicForm olympicForm = new OlympicForm(this, selectedOlympic);
                             olympicForm.Show();
                             this.Hide();
@@ -47,7 +52,8 @@ namespace OlympicGames
                         if (lbOlympics.SelectedItem != null)
                         {
                             int selectedIndex = lbOlympics.SelectedIndex;
-                            olympics.Remove(olympics[selectedIndex]);
+                            Olympic selectedOlympic = DataManager.GetAll().ToList()[selectedIndex];
+                            DataManager.Delete(selectedOlympic);
                             UpdateListBox();
                             btnDelOlympic.Enabled = false;
                             btnEditOlympic.Enabled = false;
@@ -66,7 +72,7 @@ namespace OlympicGames
                 btnEditOlympic.Enabled = true;
                 lbCountriesParticipants.Items.Clear();
                 int selectedIndex = lbOlympics.SelectedIndex;
-                Olympic ol = olympics[selectedIndex];
+                Olympic ol = DataManager.GetAll().ToList()[selectedIndex];
                 foreach (var p in ol.participants)
                 {
                     lbCountriesParticipants.Items.Add(p);
@@ -76,15 +82,15 @@ namespace OlympicGames
 
         public void AddOlympic(Olympic olympic)
         {
-            olympics.Add(olympic);
+            DataManager.Add(olympic);
             UpdateListBox();
         }
-        public void UpdateOlympicInfo(Olympic olympic)
+        public void UpdateOlympicInfo(Olympic olympicNew)
         {
             int selectedIndex = lbOlympics.SelectedIndex;
             if (selectedIndex != -1)
             {
-                olympics[selectedIndex] = olympic;
+                DataManager.Update(DataManager.GetAll().ToList()[selectedIndex], olympicNew);
             }
             UpdateListBox();
         }
@@ -92,7 +98,7 @@ namespace OlympicGames
         {
             lbOlympics.Items.Clear();
             lbCountriesParticipants.Items.Clear();
-            foreach (var ol in olympics)
+            foreach (var ol in DataManager.GetAll())
             {
                 lbOlympics.Items.Add(ol);
             }
@@ -100,17 +106,100 @@ namespace OlympicGames
 
         private void OpenMenuOptionClick(object sender, EventArgs e)
         {
+            switch (((ToolStripMenuItem)sender).Tag)
+            {
+                case "csv":
+                    DataManager = new CsvOlympicDataManager();
+                    break;
+                case "json":
+                    DataManager = new JsonOlympicDataManager();
+                    break;
+                case "txt":
+                    DataManager = new TxtOlympicDataManager();
+                    break;
+                case "xlsx":
+                    DataManager = new XlsxOlympicDataManager();
+                    break;
+                case "xml":
+                    DataManager = new XmlOlympicDataManager();
+                    break;
+            }
 
+            var dialog = new OpenFileDialog();
+            dialog.Filter = DataManager.Filter;
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                _hasOpenedFile = true;
+                _openedPath = dialog.FileName;
+                DataManager.Read(dialog.FileName);
+                UpdateListBox();
+            }
+        }
+        private void SaveAsMenuOptionClick(object sender, EventArgs e)
+        {
+            List<Olympic> currentOlympics = DataManager.GetAll().ToList();
+            switch (((ToolStripMenuItem)sender).Tag)
+            {
+                case "csv":
+                    DataManager = new CsvOlympicDataManager();
+                    break;
+                case "json":
+                    DataManager = new JsonOlympicDataManager();
+                    break;
+                case "txt":
+                    DataManager = new TxtOlympicDataManager();
+                    break;
+                case "xlsx":
+                    DataManager = new XlsxOlympicDataManager();
+                    break;
+                case "xml":
+                    DataManager = new XmlOlympicDataManager();
+                    break;
+            }
+            DataManager.SetAll(currentOlympics);
+
+            var dialog = new SaveFileDialog();
+            dialog.Filter = DataManager.Filter;
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var confirm = MessageBox.Show("Do you really wanna save this file?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                {
+                    if (confirm == DialogResult.Yes)
+                    {
+                        DataManager.Write(dialog.FileName);
+                        MessageBox.Show("Data saved!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data was not saved!");
+                    }
+                }
+            }
         }
 
         private void SaveMenuOptionClick(object sender, EventArgs e)
         {
+            if (!_hasOpenedFile)
+            {
+                MessageBox.Show("No file opened!");
+                return;
+            }
 
+            var confirm = MessageBox.Show("Do you really wanna save this file?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            {
+                if (confirm == DialogResult.Yes)
+                {
+                    DataManager.Write(_openedPath);
+                    MessageBox.Show("Data saved!");
+                }
+                else
+                {
+                    MessageBox.Show("Data was not saved!");
+                }
+            }
         }
 
-        private void SaveAsMenuOptionClick(object sender, EventArgs e)
-        {
-
-        }
     }
 }

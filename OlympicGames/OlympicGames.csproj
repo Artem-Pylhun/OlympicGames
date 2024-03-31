@@ -12,4 +12,8 @@
     <PackageReference Include="EPPlus" Version="7.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OlympicGames.Core\OlympicGames.Core\OlympicGames.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace OlympicGames.Entities
+﻿namespace OlympicGames.Core.Entities
 {
     public class Athlete
     {

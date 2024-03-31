@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OlympicGames.Entities
+namespace OlympicGames.Core.Entities
 {
     public class EventType
     {

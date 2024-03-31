@@ -1,4 +1,4 @@
-using OlympicGames.Entities;
+using OlympicGames.Core.Entities;
 
 namespace OlympicGames
 {

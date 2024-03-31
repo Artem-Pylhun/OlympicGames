@@ -151,10 +151,12 @@
             // lbCities
             // 
             lbCities.FormattingEnabled = true;
+            lbCities.HorizontalScrollbar = true;
             lbCities.Location = new Point(195, 76);
             lbCities.Name = "lbCities";
             lbCities.Size = new Size(150, 204);
             lbCities.TabIndex = 10;
+            lbCities.SelectedIndexChanged += lbCities_SelectedIndexChanged;
             // 
             // lbAthletes1
             // 
@@ -493,6 +495,7 @@
             lbCountryParticipants.Name = "lbCountryParticipants";
             lbCountryParticipants.Size = new Size(269, 244);
             lbCountryParticipants.TabIndex = 3;
+            lbCountryParticipants.SelectedIndexChanged += lbCountryParticipants_SelectedIndexChanged;
             // 
             // label4
             // 

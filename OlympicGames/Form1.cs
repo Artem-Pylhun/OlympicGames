@@ -57,14 +57,7 @@ namespace OlympicGames
 
             }
         }
-        private void UpdateListBox()
-        {
-            lbOlympics.Items.Clear();
-            foreach (var ol in olympics)
-            {
-                lbOlympics.Items.Add(ol);
-            }
-        }
+
         private void lbOlympics_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbOlympics.SelectedIndex != -1)
@@ -78,6 +71,30 @@ namespace OlympicGames
                 {
                     lbCountriesParticipants.Items.Add(p);
                 }
+            }
+        }
+
+        public void AddOlympic(Olympic olympic)
+        {
+            olympics.Add(olympic);
+            UpdateListBox();
+        }
+        public void UpdateOlympicInfo(Olympic olympic)
+        {
+            int selectedIndex = lbOlympics.SelectedIndex;
+            if(selectedIndex != -1)
+            {
+                olympics[selectedIndex] = olympic;
+            }
+            UpdateListBox();
+        }
+        private void UpdateListBox()
+        {
+            lbOlympics.Items.Clear();
+            lbCountriesParticipants.Items.Clear();
+            foreach (var ol in olympics)
+            {
+                lbOlympics.Items.Add(ol);
             }
         }
     }

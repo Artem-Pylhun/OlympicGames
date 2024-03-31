@@ -16,5 +16,16 @@ namespace OlympicGames.Core.Entities
         {
             return $"Year: {Year}, Host: {HostCity}, Type: {EventType.Title}";
         }
+        public string ToWriteString()
+        {
+            string result = "";
+            result += $"{Year}|{HostCity.Title}-{HostCity.Location}-{HostCity.Population}|{EventType.Title}|";
+
+            result += string.Join('-', participants
+                .Select(p => $"{p.Title},{p.Wins},{p.Losses},{string.Join(';', p.Athletes
+                .Select(a => $"{a.FullName}#{a.Age}#{a.IsMale}"))}"));
+
+            return result ;
+        }
     }
 }

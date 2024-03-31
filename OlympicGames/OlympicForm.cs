@@ -238,6 +238,11 @@ namespace OlympicGames
             if (cbCountryParticipants.SelectedIndex != -1)
             {
                 CountryParticipant countryParticipant = participants[cbCountryParticipants.SelectedIndex];
+                if (olympic.participants.Contains(countryParticipant))
+                {
+                    MessageBox.Show("Country already participate!");
+                    return;
+                }
                 olympic.participants.Add(countryParticipant);
                 cbCountryParticipants.SelectedIndex = -1;
                 UpdateListBoxes();
@@ -402,6 +407,16 @@ namespace OlympicGames
         {
             btnDelAthlete.Enabled = true;
             btnEditAthlete.Enabled = true;
+            if (lbAthletes.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            CountryParticipant selectedCountryParticipant = participants[lbParticipants.SelectedIndex];
+            Athlete athlete = selectedCountryParticipant.Athletes[lbAthletes.SelectedIndex];
+            tbFullName.Text = athlete.FullName;
+            nudAge.Value = athlete.Age;
+            cbIsMale.Checked = athlete.IsMale;
         }
 
         private void cbCountryParticipants_SelectedIndexChanged(object sender, EventArgs e)
@@ -419,7 +434,10 @@ namespace OlympicGames
             {
                 btnDelCity.Enabled = true;
                 btnEditCity.Enabled = true;
-
+                City selected = cities[lbCities.SelectedIndex];
+                tbCityTitle.Text = selected.Title;
+                tbLocation.Text = selected.Location;
+                nudPopulation.Value = selected.Population;
             }
         }
 

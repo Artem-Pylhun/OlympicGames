@@ -5,11 +5,10 @@
         public string FullName { get; set; }
         public int Age { get; set; }
         public bool IsMale { get; set; }
-        public string Nationality { get; set; }
 
         public override string ToString()
         {
-            return $"{FullName},{Age} - {Nationality}, {Male()}";
+            return $"{FullName},{Age}, {Male()}";
         }
         public string Male()
         {

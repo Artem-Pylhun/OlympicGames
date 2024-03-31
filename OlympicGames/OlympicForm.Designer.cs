@@ -161,6 +161,7 @@
             // lbAthletes1
             // 
             lbAthletes1.FormattingEnabled = true;
+            lbAthletes1.HorizontalScrollbar = true;
             lbAthletes1.Location = new Point(360, 245);
             lbAthletes1.Name = "lbAthletes1";
             lbAthletes1.Size = new Size(148, 164);
@@ -169,6 +170,7 @@
             // lbParticipants
             // 
             lbParticipants.FormattingEnabled = true;
+            lbParticipants.HorizontalScrollbar = true;
             lbParticipants.Location = new Point(514, 53);
             lbParticipants.Name = "lbParticipants";
             lbParticipants.Size = new Size(196, 284);
@@ -494,6 +496,7 @@
             // lbCountryParticipants
             // 
             lbCountryParticipants.FormattingEnabled = true;
+            lbCountryParticipants.HorizontalScrollbar = true;
             lbCountryParticipants.Location = new Point(430, 58);
             lbCountryParticipants.Name = "lbCountryParticipants";
             lbCountryParticipants.Size = new Size(269, 244);
@@ -673,6 +676,7 @@
             // lbAthletes
             // 
             lbAthletes.FormattingEnabled = true;
+            lbAthletes.HorizontalScrollbar = true;
             lbAthletes.Location = new Point(200, 67);
             lbAthletes.Name = "lbAthletes";
             lbAthletes.Size = new Size(208, 244);

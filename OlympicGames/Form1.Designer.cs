@@ -40,6 +40,7 @@
             // lbOlympics
             // 
             lbOlympics.FormattingEnabled = true;
+            lbOlympics.HorizontalScrollbar = true;
             lbOlympics.Location = new Point(59, 74);
             lbOlympics.Name = "lbOlympics";
             lbOlympics.Size = new Size(199, 324);
@@ -49,6 +50,7 @@
             // lbCountriesParticipants
             // 
             lbCountriesParticipants.FormattingEnabled = true;
+            lbCountriesParticipants.HorizontalScrollbar = true;
             lbCountriesParticipants.Location = new Point(389, 74);
             lbCountriesParticipants.Name = "lbCountriesParticipants";
             lbCountriesParticipants.Size = new Size(195, 324);

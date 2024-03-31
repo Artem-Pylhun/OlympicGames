@@ -10,16 +10,16 @@ namespace OlympicGames.Services.OlympicDataManagers
 {
     public class TxtOlympicDataManager : IOlympicDataManager
     {
-        public bool IsChanged => throw new NotImplementedException();
+        public bool IsChanged { get; set; } = false;
 
         public string Filter => throw new NotImplementedException();
 
-        public void Add(object entity)
+        public void Add(Olympic entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(object entity)
+        public void Delete(Olympic entity)
         {
             throw new NotImplementedException();
         }
@@ -39,7 +39,7 @@ namespace OlympicGames.Services.OlympicDataManagers
             throw new NotImplementedException();
         }
 
-        public void Update(object oldEntity, object newEntity)
+        public void Update(Olympic oldEntity, Olympic newEntity)
         {
             throw new NotImplementedException();
         }

@@ -13,7 +13,7 @@ namespace OlympicGames
         public Form1()
         {
             InitializeComponent();
-            DataManager = new TxtOlympicDataManager();
+            DataManager = new JsonOlympicDataManager();
             btnDelOlympic.Enabled = false;
             btnEditOlympic.Enabled = false;
             UpdateListBox();

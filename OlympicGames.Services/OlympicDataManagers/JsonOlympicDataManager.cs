@@ -3,50 +3,54 @@ using OlympicGames.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace OlympicGames.Services.OlympicDataManagers
 {
     public class JsonOlympicDataManager : IOlympicDataManager
     {
-        public bool IsChanged => throw new NotImplementedException();
+        private List<Olympic> olympics = new List<Olympic>();
+        public bool IsChanged { get; set; } = false;
 
-        public string Filter => throw new NotImplementedException();
+        public string Filter => "JSON files (*.json)|*.json";
 
-        public void Add(object entity)
+        public void Add(Olympic entity)
         {
-            throw new NotImplementedException();
+            olympics.Add(entity);
         }
 
-        public void Delete(object entity)
+        public void Delete(Olympic entity)
         {
-            throw new NotImplementedException();
+            olympics.Remove(entity);
+        }
+        public void Update(Olympic oldEntity, Olympic newEntity)
+        {
+            int index = olympics.IndexOf(oldEntity);
+            olympics[index] = newEntity;
         }
 
         public IEnumerable<Olympic> GetAll()
         {
-            throw new NotImplementedException();
+            return olympics;
         }
-
-        public void Read(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public void SetAll(IEnumerable<Olympic> entities)
         {
-            throw new NotImplementedException();
+            olympics = entities.ToList();
         }
-
-        public void Update(object oldEntity, object newEntity)
+        public void Read(string path)
         {
-            throw new NotImplementedException();
+            string json = File.ReadAllText(path);
+            List<Olympic> olympics = JsonSerializer.Deserialize<List<Olympic>>(json);
+            this.olympics = olympics;
         }
 
         public void Write(string path)
         {
-            throw new NotImplementedException();
+            string json = JsonSerializer.Serialize(olympics, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(path, json);
         }
     }
 }

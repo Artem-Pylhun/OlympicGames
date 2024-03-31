@@ -9,8 +9,6 @@ namespace OlympicGames.Core.Entities
     public class EventType
     {
         public string[] Type = { "Winter", "Summer" };
-        public string Title;
-
-
+        public string Title { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace OlympicGames.Services.Common
         void Read(string path);
         void Write(string path);
         IEnumerable<Olympic> GetAll();
-        bool IsChanged { get; }
-        void Add(object entity);
+        bool IsChanged { get; set; }
+        void Add(Olympic entity);
 
-        void Delete(object entity);
-        void Update(object oldEntity, object newEntity);
+        void Delete(Olympic entity);
+        void Update(Olympic oldEntity, Olympic newEntity);
     }
 }

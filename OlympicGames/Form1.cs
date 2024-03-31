@@ -52,7 +52,7 @@ namespace OlympicGames
                             btnDelOlympic.Enabled = false;
                             btnEditOlympic.Enabled = false;
                         }
-                            break;
+                        break;
                     }
 
             }
@@ -67,7 +67,7 @@ namespace OlympicGames
                 lbCountriesParticipants.Items.Clear();
                 int selectedIndex = lbOlympics.SelectedIndex;
                 Olympic ol = olympics[selectedIndex];
-                foreach (var p in ol.participants) 
+                foreach (var p in ol.participants)
                 {
                     lbCountriesParticipants.Items.Add(p);
                 }
@@ -82,7 +82,7 @@ namespace OlympicGames
         public void UpdateOlympicInfo(Olympic olympic)
         {
             int selectedIndex = lbOlympics.SelectedIndex;
-            if(selectedIndex != -1)
+            if (selectedIndex != -1)
             {
                 olympics[selectedIndex] = olympic;
             }
@@ -96,6 +96,21 @@ namespace OlympicGames
             {
                 lbOlympics.Items.Add(ol);
             }
+        }
+
+        private void OpenMenuOptionClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveMenuOptionClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveAsMenuOptionClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

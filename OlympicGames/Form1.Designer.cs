@@ -35,6 +35,22 @@
             btnAddOlympic = new Button();
             btnEditOlympic = new Button();
             btnDelOlympic = new Button();
+            menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            openToolStripMenuItem = new ToolStripMenuItem();
+            cSVToolStripMenuItem = new ToolStripMenuItem();
+            jSONToolStripMenuItem = new ToolStripMenuItem();
+            tXTToolStripMenuItem = new ToolStripMenuItem();
+            xLSXToolStripMenuItem = new ToolStripMenuItem();
+            xMLToolStripMenuItem = new ToolStripMenuItem();
+            saveToolStripMenuItem = new ToolStripMenuItem();
+            saveAsToolStripMenuItem = new ToolStripMenuItem();
+            cSVToolStripMenuItem1 = new ToolStripMenuItem();
+            jSONToolStripMenuItem1 = new ToolStripMenuItem();
+            tXTToolStripMenuItem1 = new ToolStripMenuItem();
+            xLSXToolStripMenuItem1 = new ToolStripMenuItem();
+            xMLToolStripMenuItem1 = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // lbOlympics
@@ -60,7 +76,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(59, 15);
+            label1.Location = new Point(59, 28);
             label1.Name = "label1";
             label1.Size = new Size(199, 31);
             label1.TabIndex = 3;
@@ -70,7 +86,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.Location = new Point(389, 15);
+            label2.Location = new Point(389, 28);
             label2.Name = "label2";
             label2.Size = new Size(203, 31);
             label2.TabIndex = 3;
@@ -109,11 +125,130 @@
             btnDelOlympic.UseVisualStyleBackColor = true;
             btnDelOlympic.Click += btnOlympic_Click;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(695, 28);
+            menuStrip1.TabIndex = 8;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, saveToolStripMenuItem, saveAsToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(46, 24);
+            fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            openToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cSVToolStripMenuItem, jSONToolStripMenuItem, tXTToolStripMenuItem, xLSXToolStripMenuItem, xMLToolStripMenuItem });
+            openToolStripMenuItem.Name = "openToolStripMenuItem";
+            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Text = "Open";
+            // 
+            // cSVToolStripMenuItem
+            // 
+            cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
+            cSVToolStripMenuItem.Size = new Size(224, 26);
+            cSVToolStripMenuItem.Tag = "csv";
+            cSVToolStripMenuItem.Text = "CSV";
+            cSVToolStripMenuItem.Click += OpenMenuOptionClick;
+            // 
+            // jSONToolStripMenuItem
+            // 
+            jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
+            jSONToolStripMenuItem.Size = new Size(127, 26);
+            jSONToolStripMenuItem.Tag = "json";
+            jSONToolStripMenuItem.Text = "JSON";
+            jSONToolStripMenuItem.Click += OpenMenuOptionClick;
+            // 
+            // tXTToolStripMenuItem
+            // 
+            tXTToolStripMenuItem.Name = "tXTToolStripMenuItem";
+            tXTToolStripMenuItem.Size = new Size(127, 26);
+            tXTToolStripMenuItem.Tag = "txt";
+            tXTToolStripMenuItem.Text = "TXT";
+            tXTToolStripMenuItem.Click += OpenMenuOptionClick;
+            // 
+            // xLSXToolStripMenuItem
+            // 
+            xLSXToolStripMenuItem.Name = "xLSXToolStripMenuItem";
+            xLSXToolStripMenuItem.Size = new Size(127, 26);
+            xLSXToolStripMenuItem.Tag = "xlsx";
+            xLSXToolStripMenuItem.Text = "XLSX";
+            xLSXToolStripMenuItem.Click += OpenMenuOptionClick;
+            // 
+            // xMLToolStripMenuItem
+            // 
+            xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            xMLToolStripMenuItem.Size = new Size(127, 26);
+            xMLToolStripMenuItem.Tag = "xml";
+            xMLToolStripMenuItem.Text = "XML";
+            xMLToolStripMenuItem.Click += OpenMenuOptionClick;
+            // 
+            // saveToolStripMenuItem
+            // 
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.Size = new Size(224, 26);
+            saveToolStripMenuItem.Text = "Save";
+            saveToolStripMenuItem.Click += SaveMenuOptionClick;
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            saveAsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cSVToolStripMenuItem1, jSONToolStripMenuItem1, tXTToolStripMenuItem1, xLSXToolStripMenuItem1, xMLToolStripMenuItem1 });
+            saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            saveAsToolStripMenuItem.Size = new Size(224, 26);
+            saveAsToolStripMenuItem.Text = "Save as";
+            // 
+            // cSVToolStripMenuItem1
+            // 
+            cSVToolStripMenuItem1.Name = "cSVToolStripMenuItem1";
+            cSVToolStripMenuItem1.Size = new Size(224, 26);
+            cSVToolStripMenuItem1.Tag = "csv";
+            cSVToolStripMenuItem1.Text = "CSV";
+            cSVToolStripMenuItem1.Click += SaveAsMenuOptionClick;
+            // 
+            // jSONToolStripMenuItem1
+            // 
+            jSONToolStripMenuItem1.Name = "jSONToolStripMenuItem1";
+            jSONToolStripMenuItem1.Size = new Size(224, 26);
+            jSONToolStripMenuItem1.Tag = "json";
+            jSONToolStripMenuItem1.Text = "JSON";
+            jSONToolStripMenuItem1.Click += SaveAsMenuOptionClick;
+            // 
+            // tXTToolStripMenuItem1
+            // 
+            tXTToolStripMenuItem1.Name = "tXTToolStripMenuItem1";
+            tXTToolStripMenuItem1.Size = new Size(224, 26);
+            tXTToolStripMenuItem1.Tag = "txt";
+            tXTToolStripMenuItem1.Text = "TXT";
+            tXTToolStripMenuItem1.Click += SaveAsMenuOptionClick;
+            // 
+            // xLSXToolStripMenuItem1
+            // 
+            xLSXToolStripMenuItem1.Name = "xLSXToolStripMenuItem1";
+            xLSXToolStripMenuItem1.Size = new Size(224, 26);
+            xLSXToolStripMenuItem1.Tag = "xlsx";
+            xLSXToolStripMenuItem1.Text = "XLSX";
+            xLSXToolStripMenuItem1.Click += SaveAsMenuOptionClick;
+            // 
+            // xMLToolStripMenuItem1
+            // 
+            xMLToolStripMenuItem1.Name = "xMLToolStripMenuItem1";
+            xMLToolStripMenuItem1.Size = new Size(224, 26);
+            xMLToolStripMenuItem1.Tag = "xml";
+            xMLToolStripMenuItem1.Text = "XML";
+            xMLToolStripMenuItem1.Click += SaveAsMenuOptionClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(695, 523);
+            Controls.Add(menuStrip1);
             Controls.Add(btnDelOlympic);
             Controls.Add(btnEditOlympic);
             Controls.Add(btnAddOlympic);
@@ -123,6 +258,8 @@
             Controls.Add(lbOlympics);
             Name = "Form1";
             Text = "Form1";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,5 +273,20 @@
         private Button btnAddOlympic;
         private Button btnEditOlympic;
         private Button btnDelOlympic;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem cSVToolStripMenuItem;
+        private ToolStripMenuItem jSONToolStripMenuItem;
+        private ToolStripMenuItem tXTToolStripMenuItem;
+        private ToolStripMenuItem xLSXToolStripMenuItem;
+        private ToolStripMenuItem xMLToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripMenuItem cSVToolStripMenuItem1;
+        private ToolStripMenuItem jSONToolStripMenuItem1;
+        private ToolStripMenuItem tXTToolStripMenuItem1;
+        private ToolStripMenuItem xLSXToolStripMenuItem1;
+        private ToolStripMenuItem xMLToolStripMenuItem1;
     }
 }

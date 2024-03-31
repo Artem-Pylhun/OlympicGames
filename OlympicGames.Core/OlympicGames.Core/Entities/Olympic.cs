@@ -27,5 +27,18 @@ namespace OlympicGames.Core.Entities
 
             return result ;
         }
+        public string ToCsvString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{Year},{HostCity.Title},{HostCity.Location},{HostCity.Population},{EventType.Title}");
+
+            foreach (var participant in participants)
+            {
+                sb.Append($",{participant.Title},{participant.Wins},{participant.Losses}");
+                sb.Append($",{participant.AthletesToString()}");
+            }
+
+            return sb.ToString();
+        }
     }
 }

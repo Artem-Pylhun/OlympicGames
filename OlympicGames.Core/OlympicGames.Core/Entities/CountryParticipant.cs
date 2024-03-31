@@ -17,5 +17,9 @@ namespace OlympicGames.Core.Entities
         {
             return $"{Title}, W/L: {Wins} - {Losses}";
         }
+        public string AthletesToString()
+        {
+            return string.Join(";", Athletes.Select(a => $"{a.FullName}#{a.Age}#{a.IsMale}"));
+        }
     }
 }
